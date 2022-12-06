@@ -34,6 +34,16 @@ public class App
 		return x-y;
 	}
 	
+	public int multiplicar()
+	{
+		return x*y;
+	}
+	
+	public int potencia()
+	{
+		return (int)(Math.pow(x, y));
+	}
+	
 	public static void main(String[] args)
 	{
 		Scanner s = new Scanner(System.in);
@@ -53,18 +63,21 @@ public class App
 				System.out.println("0: Salir");
 				System.out.println("1: Suma");
 				System.out.println("2: Resta");
-				System.out.println("Escribe un numero entre el 0 y el 2");
+				System.out.println("3: Multiplicacion");
+				System.out.println("4: Potencia");
+				System.out.println("Escribe un numero entre el 0 y el 4");
 				op = s.nextInt();
-			}while(op < 0 && op >2);
+			}while(op < 0 && op > 4);
 			
 			switch(op) {
 				case 0: flag=false;break;
 				case 1: System.out.println("El resultado es: "+c.suma());break;
 				case 2: System.out.println("El resultado es: "+c.resta());break;
+				case 3: System.out.println("El resultado es: "+c.multiplicar());break;
+				case 4: System.out.println("El resultado es: "+c.potencia());break;
 			}
 		}
 		System.out.println("Gracias por utilizar esta calculadora");
 		s.close();
 	}
-	
 }

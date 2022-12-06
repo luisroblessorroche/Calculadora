@@ -35,5 +35,17 @@ public class AppTest
     public void checkResta() {
     	assertEquals(c.resta(),2);
     	assertEquals(d.resta(),12);
-    }    
+    }
+    
+    @Test
+    public void checkMultiplicar() {
+    	assertEquals(c.multiplicar(),35);
+    	assertEquals(d.multiplicar(),0);
+    }
+    
+    @Test
+    public void checkPotencia() {
+    	assertEquals(c.potencia(),16807);
+    	assertEquals(d.potencia(),1);
+    }
 }
