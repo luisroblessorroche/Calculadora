@@ -6,6 +6,13 @@ import java.util.*;
 
 public class App
 {
+	public class DivideByZeroException extends Exception
+	{
+		public DivideByZeroException(String message)
+		{
+			super(message);
+		}
+	}
 	
 	private int x;
 	private int y;
@@ -44,6 +51,30 @@ public class App
 		return (int)(Math.pow(x, y));
 	}
 	
+	public int dividir() throws DivideByZeroException
+	{
+		if(y == 0)
+		{
+			throw new DivideByZeroException("No se puede dividir entre 0");
+		}
+		else
+		{
+			return x/y;
+		}
+	}
+	
+	public int modulo() throws DivideByZeroException
+	{
+		if(y == 0)
+		{
+			throw new DivideByZeroException("No se puede hacer el modulo entre 0");
+		}
+		else
+		{
+			return x%y;
+		}
+	}
+	
 	public static void main(String[] args)
 	{
 		Scanner s = new Scanner(System.in);
@@ -65,9 +96,11 @@ public class App
 				System.out.println("2: Resta");
 				System.out.println("3: Multiplicacion");
 				System.out.println("4: Potencia");
-				System.out.println("Escribe un numero entre el 0 y el 4");
+				System.out.println("5: Division");
+				System.out.println("6: Modulo");
+				System.out.println("Escribe un numero entre el 0 y el 6");
 				op = s.nextInt();
-			}while(op < 0 && op > 4);
+			}while(op < 0 && op > 6);
 			
 			switch(op) {
 				case 0: flag=false;break;
@@ -75,6 +108,20 @@ public class App
 				case 2: System.out.println("El resultado es: "+c.resta());break;
 				case 3: System.out.println("El resultado es: "+c.multiplicar());break;
 				case 4: System.out.println("El resultado es: "+c.potencia());break;
+				case 5: try
+				{
+					System.out.println("El resultado es: "+c.dividir());
+				}catch(DivideByZeroException ex)
+				{
+					System.out.println(ex.getMessage());
+				};break;
+				case 6: try
+				{
+					System.out.println("El resultado es: "+c.modulo());
+				}catch(DivideByZeroException ex2)
+				{
+					System.out.println(ex2.getMessage());
+				};break;
 			}
 		}
 		System.out.println("Gracias por utilizar esta calculadora");

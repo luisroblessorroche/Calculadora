@@ -4,7 +4,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+
 import org.junit.Test;
+
+import es.uca.mps.devops.cli.App.DivideByZeroException;
 
 /**
  * Unit test for simple App.
@@ -47,5 +50,49 @@ public class AppTest
     public void checkPotencia() {
     	assertEquals(c.potencia(),16807);
     	assertEquals(d.potencia(),1);
+    }
+    
+    @Test
+    public void checkDividir() {
+    	try
+    	{
+    		assertEquals(c.dividir(),1);
+    	}catch(DivideByZeroException ex)
+    	{
+    		assertEquals(ex.getMessage(),"No se puede dividir entre 0");
+    	}
+    }
+    
+    @Test
+    public void checkDividir0() {
+    	try
+    	{
+    		d.dividir();
+    	}catch(DivideByZeroException ex)
+    	{
+    		assertEquals(ex.getMessage(),"No se puede dividir entre 0");
+    	}
+    }
+    
+    @Test
+    public void checkModulo() {
+    	try
+    	{
+    		assertEquals(c.modulo(),2);
+    	}catch(DivideByZeroException ex2)
+    	{
+    		assertEquals(ex2.getMessage(),"No se puede hacer el modulo entre 0");
+    	}
+    }
+    
+    @Test
+    public void checkModulo0() {
+    	try
+    	{
+    		d.modulo();
+    	}catch(DivideByZeroException ex2)
+    	{
+    		assertEquals(ex2.getMessage(),"No se puede hacer el modulo entre 0");
+    	}
     }
 }
