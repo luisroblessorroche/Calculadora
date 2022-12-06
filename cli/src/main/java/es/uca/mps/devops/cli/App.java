@@ -66,4 +66,5 @@ public class App
 		System.out.println("Gracias por utilizar esta calculadora");
 		s.close();
 	}
+	
 }
